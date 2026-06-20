@@ -203,9 +203,9 @@ with tab_dziennik:
             with col1:
                 waga = st.number_input("Waga porcji (g):", min_value=0.0, step=1.0, value=None, key=f"wg_{st.session_state.dziennik_key}_{dynamiczny_sufix}")
             with col2:
-                kcal_100g = st.number_input("Kalorie w 100g (kcal):", min_value=0.0, step=1.0, value=float(domyslne_kcal), key=f"kc_{st.session_state.dziennik_key}_{dynamiczny_sufix}")
+                kcal_100g = st.number_input("Kalorie w 100g (kcal):", min_value=0.0, step=1.0, value=float(domyslne_kcal) if domyslne_kcal is not None else 0.0, key=f"kc_{st.session_state.dziennik_key}_{dynamiczny_sufix}")
             with col3:
-                bialko_100g = st.number_input("Białko w 100g (g):", min_value=0.0, step=0.1, value=float(domyslne_bialko), key=f"bi_{st.session_state.dziennik_key}_{dynamiczny_sufix}")
+                bialko_100g = st.number_input("Białko w 100g (g):", min_value=0.0, step=0.1, value=float(domyslne_bialko) if domyslne_bialko is not None else 0.0, key=f"bi_{st.session_state.dziennik_key}_{dynamiczny_sufix}")
             
             if waga is not None and kcal_100g is not None and bialko_100g is not None:
                 kcal_total = round((waga * kcal_100g) / 100.0, 1)
